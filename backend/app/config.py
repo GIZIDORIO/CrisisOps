@@ -3,7 +3,7 @@ from functools import lru_cache
 
 
 class Settings(BaseSettings):
-    app_name: str = "CrisisOps API"
+    app_name: str = "GITPO API"
     debug: bool = False
 
     # Supabase
