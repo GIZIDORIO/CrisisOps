@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: crisisops-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: GOOGLE_CLIENT_ID
+        value: 36359322873-jvo192506b9duqhglggkv7g8gc7j1g34.apps.googleusercontent.com
+      - key: GOOGLE_CLIENT_SECRET
+        value: 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
+      - key: SECRET_KEY
+        value: 5dc21c67c22830bf438ef19baf58394c02af5b258c86807c79fa4596f3392fd9
+      - key: FRONTEND_URL
+        value: https://crisisops-frontend.vercel.app
+      - key: DATABASE_URL
+        fromDatabase:
+          name: crisisops-db
+          property: connectionString
+
+databases:
+  - name: crisisops-db
+    databaseName: crisisops
+    user: crisisops
+    plan: free
