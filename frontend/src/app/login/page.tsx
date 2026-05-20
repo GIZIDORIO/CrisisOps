@@ -8,7 +8,9 @@ import { useAuthStore } from "@/lib/store";
 import { api } from "@/lib/api";
 import toast from "react-hot-toast";
 
-const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "";
+const GOOGLE_CLIENT_ID =
+  process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ||
+  "36359322873-mht3v2podfc11sss1mhp0tva5r9ot1k9.apps.googleusercontent.com";
 
 function LoginContent() {
   const router = useRouter();
@@ -34,17 +36,22 @@ function LoginContent() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 mb-6">
+          <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-10 h-10 rounded-lg bg-brand flex items-center justify-center">
-              <span className="text-white font-bold text-lg">C</span>
+              <span className="text-white font-bold text-lg">G</span>
             </div>
-            <span className="text-2xl font-bold text-text-primary tracking-tight">
-              Crisis<span className="text-brand">Ops</span>
-            </span>
+            <div className="text-left">
+              <div className="text-xl font-bold text-text-primary tracking-tight leading-none">
+                Gov<span className="text-brand">ITPO</span>
+              </div>
+              <div className="text-[10px] text-text-muted leading-none mt-0.5 tracking-wide">
+                Governança Integrada
+              </div>
+            </div>
           </div>
           <h1 className="text-3xl font-bold text-text-primary mb-2">Bem-vindo</h1>
           <p className="text-text-secondary text-sm">
-            Plataforma de governança para comitês de crise
+            Plataforma de Transformação e Performance Organizacional
           </p>
         </div>
 
@@ -75,7 +82,7 @@ function LoginContent() {
         </div>
 
         <p className="text-center text-xs text-text-muted mt-6">
-          © 2024 CrisisOps — Sistema de Governança de Crise
+          © 2026 GITPO — Governança Integrada de Transformação e Performance Organizacional
         </p>
       </div>
     </div>
