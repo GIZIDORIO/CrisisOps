@@ -33,7 +33,7 @@ type Minute = {
 
 function MeetingModal({ open, onClose, onSave }: { open: boolean; onClose: () => void; onSave: () => void }) {
   const [form, setForm] = useState({
-    title: "", committee: "strategic", scheduled_at: "", location: "", attendees: "", status: "scheduled",
+    title: "", committee: "executive", scheduled_at: "", location: "", attendees: "", status: "scheduled",
   });
 
   const submit = async (e: React.FormEvent) => {
@@ -43,7 +43,7 @@ function MeetingModal({ open, onClose, onSave }: { open: boolean; onClose: () =>
       toast.success("Reunião criada!");
       onSave();
       onClose();
-      setForm({ title: "", committee: "strategic", scheduled_at: "", location: "", attendees: "", status: "scheduled" });
+      setForm({ title: "", committee: "executive", scheduled_at: "", location: "", attendees: "", status: "scheduled" });
     } catch {
       toast.error("Erro ao criar reunião.");
     }
@@ -64,10 +64,11 @@ function MeetingModal({ open, onClose, onSave }: { open: boolean; onClose: () =>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-xs text-text-secondary mb-1 block">Comitê</label>
+              <label className="text-xs text-text-secondary mb-1 block">Fórum</label>
               <select className="select" value={form.committee} onChange={(e) => setForm({ ...form, committee: e.target.value })}>
-                <option value="strategic">Estratégico</option>
-                <option value="operational">Operacional</option>
+                <option value="executive">Comitê Executivo</option>
+                <option value="tactical">Comitê Tático-Operacional</option>
+                <option value="area_alignment">Alinhamento por Área</option>
               </select>
             </div>
             <div>
@@ -167,9 +168,11 @@ function MinuteEditor({ meetingId, existing, onSaved }: { meetingId: string; exi
 function MeetingCard({ meeting, minute, onRefresh }: { meeting: Meeting; minute?: Minute | null; onRefresh: () => void }) {
   const [expanded, setExpanded] = useState(false);
 
-  const committeeColor = meeting.committee === "strategic"
-    ? "text-purple-400 bg-purple-400/10 border-purple-400/20"
-    : "text-blue-400 bg-blue-400/10 border-blue-400/20";
+  const committeeColor =
+    meeting.committee === "executive"      ? "text-purple-400 bg-purple-400/10 border-purple-400/20" :
+    meeting.committee === "tactical"       ? "text-blue-400 bg-blue-400/10 border-blue-400/20" :
+    meeting.committee === "area_alignment" ? "text-emerald-400 bg-emerald-400/10 border-emerald-400/20" :
+    "text-gray-400 bg-gray-400/10 border-gray-400/20";
 
   return (
     <div className="card p-5">
@@ -279,10 +282,11 @@ export default function MinutesPage() {
         />
 
         <div className="flex gap-3 mb-6">
-          <select className="select w-48" value={filterCommittee} onChange={(e) => setFilterCommittee(e.target.value)}>
-            <option value="">Todos os comitês</option>
-            <option value="strategic">Estratégico</option>
-            <option value="operational">Operacional</option>
+          <select className="select w-56" value={filterCommittee} onChange={(e) => setFilterCommittee(e.target.value)}>
+            <option value="">Todos os fóruns</option>
+            <option value="executive">Comitê Executivo</option>
+            <option value="tactical">Comitê Tático-Operacional</option>
+            <option value="area_alignment">Alinhamento por Área</option>
           </select>
           <span className="text-text-muted text-sm flex items-center">{filtered.length} reuniões</span>
         </div>
