@@ -16,11 +16,4 @@ services:
       - key: FRONTEND_URL
         value: https://crisisops-frontend.vercel.app
       - key: DATABASE_URL
-        fromDatabase:
-          name: crisisops-db
-          property: connectionString
-
-databases:
-  - name: crisisops-db
-    databaseName: crisisops
-    user: crisisops
+        sync: false
