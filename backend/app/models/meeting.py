@@ -11,7 +11,7 @@ class Meeting(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     title = Column(String, nullable=False)
-    committee = Column(String, nullable=False)  # strategic, operational
+    committee = Column(String, nullable=False)  # executive, tactical, area_alignment
     scheduled_at = Column(DateTime(timezone=True), nullable=False)
     location = Column(String)
     attendees = Column(Text)  # JSON string list

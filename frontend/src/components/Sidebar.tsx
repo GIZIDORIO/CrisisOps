@@ -9,7 +9,7 @@ import {
   FileText,
   LogOut,
   ChevronRight,
-  AlertTriangle,
+  Network,
 } from "lucide-react";
 import { useAuthStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
@@ -18,7 +18,7 @@ import Image from "next/image";
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/action-plan", label: "Plano de Ação", icon: CheckSquare },
-  { href: "/agenda", label: "Backlog de Pauta", icon: CalendarClock },
+  { href: "/agenda", label: "Backlog Estratégico", icon: CalendarClock },
   { href: "/minutes", label: "Atas de Reunião", icon: FileText },
 ];
 
@@ -38,11 +38,12 @@ export default function Sidebar() {
       <div className="h-16 flex items-center px-5 border-b border-surface-border">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-md bg-brand flex items-center justify-center flex-shrink-0">
-            <AlertTriangle className="w-4 h-4 text-white" />
+            <Network className="w-4 h-4 text-white" />
           </div>
-          <span className="text-lg font-bold text-text-primary tracking-tight">
-            Crisis<span className="text-brand">Ops</span>
-          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="text-xs font-bold text-text-primary tracking-widest uppercase">Gov</span>
+            <span className="text-[10px] text-brand font-semibold tracking-tight leading-none">ITPO</span>
+          </div>
         </div>
       </div>
 

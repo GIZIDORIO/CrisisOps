@@ -16,8 +16,14 @@ class Task(Base):
     owner_name = Column(String)
     work_front_id = Column(UUID(as_uuid=True), ForeignKey("work_fronts.id"), nullable=True)
     deadline = Column(Date)
-    status = Column(String, default="pending")  # pending, in_progress, completed, blocked
-    priority = Column(String, default="medium")  # low, medium, high, critical
+    status = Column(String, default="pending")  # pending, in_progress, in_validation, blocked, paused, completed
+    priority = Column(String, default="P2")  # P0, P1, P2, P3
+    # Governance framework fields
+    support_team = Column(String)
+    evidence = Column(Text)
+    source_committee = Column(String)  # executive, tactical, area_alignment
+    next_step = Column(Text)
+    impediment = Column(Text)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 

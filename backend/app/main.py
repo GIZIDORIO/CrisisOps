@@ -10,9 +10,9 @@ settings = get_settings()
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="CrisisOps API",
-    description="Crisis Committee Governance System",
-    version="1.0.0",
+    title="GITPO API",
+    description="Governança Integrada de Transformação e Performance Organizacional",
+    version="2.0.0",
 )
 
 app.add_middleware(
